@@ -70,7 +70,7 @@ Here is how you can run the project locally:
 
 When starting the server for the first time, you need to enter the credentials for connecting to the rcon and the credentials from the qiwi payment system (SECRET_KEY, THEME_CODE)
 
-When you create a key pair at https://qiwi.com/p2p-admin/api you can not specify a local ip-address
+When you create a key pair at https://qiwi.com/p2p-admin/api you cannot specify a local ip-address as a notification server
 
 ### Admin panel
 
