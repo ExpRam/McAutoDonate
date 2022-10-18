@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#main {
+    background: linear-gradient(#fe581c22 ,#fe7e2226),
+    url('/public/img/background.png') no-repeat center center;
+}
