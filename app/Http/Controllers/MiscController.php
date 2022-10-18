@@ -14,6 +14,8 @@ use Qiwi\Api\BillPayments;
 
 class MiscController extends Controller
 {
+    //A lot of shit code here...
+    
     public function uuid($nickname)
     {
         $response = Http::get('https://api.mojang.com/users/profiles/minecraft/' . $nickname);
