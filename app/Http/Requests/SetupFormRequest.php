@@ -26,7 +26,7 @@ class SetupFormRequest extends FormRequest
         return [
             'username' => ['required', 'string', 'min:2'],
             'password' => ['required'],
-            'private_token' => ['required'],
+            'secret_key' => ['required'],
             'themecode' => ['required'],
             'rcon_host' => ['required'],
             'rcon_port' => ['required', 'numeric'],
