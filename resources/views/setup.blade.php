@@ -61,7 +61,7 @@
                         Qiwi Api Details
                     </label>
                     <div class="text-center mb-3">
-                        @error('private_token')<h1 class="text-red-500">{{ $message }}</h1>@enderror
+                        @error('secret_key')<h1 class="text-red-500">{{ $message }}</h1>@enderror
                         @error('themecode')<h1 class="text-red-500">{{ $message }}</h1>@enderror
                     </div>
                     <div class="-mx-3 flex flex-wrap">
@@ -69,9 +69,9 @@
                             <div class="mb-5">
                                 <input
                                     type="text"
-                                    name="private_token"
-                                    id="private_token"
-                                    placeholder="Secret token"
+                                    name="secret_key"
+                                    id="secret_key"
+                                    placeholder="Secret key"
                                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#FFAFBD] focus:shadow-md"
                                 />
                             </div>
