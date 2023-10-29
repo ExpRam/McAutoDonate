@@ -25,7 +25,7 @@ class DonateFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'min:1', Rule::unique('donates', 'title')->ignore($this->donate, 'id')],
+            'title' => ['required', 'string', 'min:1', "max:28", Rule::unique('donates', 'title')->ignore($this->donate, 'id')],
             'description' => ['required', 'min:4'],
             'price' => ['required', 'numeric', 'min:1'],
             'command' => ['required', 'min:3'],

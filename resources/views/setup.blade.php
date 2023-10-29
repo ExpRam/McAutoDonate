@@ -61,17 +61,17 @@
                         Qiwi Api Details
                     </label>
                     <div class="text-center mb-3">
-                        @error('secret_key')<h1 class="text-red-500">{{ $message }}</h1>@enderror
-                        @error('themecode')<h1 class="text-red-500">{{ $message }}</h1>@enderror
+                        @error('yoomoney_secret')<h1 class="text-red-500">{{ $message }}</h1>@enderror
+                        @error('bill_number')<h1 class="text-red-500">{{ $message }}</h1>@enderror
                     </div>
                     <div class="-mx-3 flex flex-wrap">
                         <div class="w-full px-3 sm:w-1/2">
                             <div class="mb-5">
                                 <input
                                     type="text"
-                                    name="secret_key"
-                                    id="secret_key"
-                                    placeholder="Secret key"
+                                    name="yoomoney_secret"
+                                    id="yoomoney_secret"
+                                    placeholder="Secret token"
                                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#FFAFBD] focus:shadow-md"
                                 />
                             </div>
@@ -80,9 +80,9 @@
                             <div class="mb-5">
                                 <input
                                     type="text"
-                                    name="themecode"
-                                    id="themecode"
-                                    placeholder="Themecode"
+                                    name="bill_number"
+                                    id="bill_number"
+                                    placeholder="Bill Number"
                                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#FFAFBD] focus:shadow-md"
                                 />
                             </div>

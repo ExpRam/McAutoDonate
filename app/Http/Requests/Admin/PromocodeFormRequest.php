@@ -25,7 +25,7 @@ class PromocodeFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'promocode' => ['required', 'string', Rule::unique('promocodes', 'promocode')->
+            'promocode' => ['required', 'string', "max:15", Rule::unique('promocodes', 'promocode')->
             ignore($this->route()->parameter('promocode'), 'id')],
             'count' => ['required', 'numeric', 'min:1'],
             'percent' => ['required', 'numeric', 'min:1'],

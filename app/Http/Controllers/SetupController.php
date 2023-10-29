@@ -26,8 +26,8 @@ class SetupController extends Controller
                 'MCRCON_PORT' => $request->rcon_port,
                 'MCRCON_PASSWORD' => $request->rcon_password,
 
-                'QIWI_SECRET_KEY' => $request->secret_key,
-                'QIWI_THEMECODE' => $request->themecode,
+                'YOOMONEY_SECRET' => $request->yoomoney_secret,
+                'BILL_NUMBER' => $request->bill_number,
 
                 'SETUP_DONE' => true,
 

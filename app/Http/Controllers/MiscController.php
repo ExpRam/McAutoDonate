@@ -8,14 +8,13 @@ use App\Models\Donate;
 use App\Models\Promocode;
 use App\Models\User;
 use App\Services\Minecraft\Rcon;
+use App\Services\Yoomoney\YooMoneyAPI;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Qiwi\Api\BillPayments;
+use Illuminate\Support\Facades\Log;
 
 class MiscController extends Controller
 {
-    //A lot of shit code here...
-    
     public function uuid($nickname)
     {
         $response = Http::get('https://api.mojang.com/users/profiles/minecraft/' . $nickname);
@@ -40,19 +39,15 @@ class MiscController extends Controller
 
     public function handler(Request $request)
     {
-        $secretKey = env('QIWI_SECRET_KEY');
-        $billPayments = new BillPayments($secretKey);
-        $validSignatureFromNotificationServer = $request->header('X-Api-Signature-SHA256');
-        $notificationData = $request->all();
-        $result = $billPayments->checkNotificationSignature(
-            $validSignatureFromNotificationServer, $notificationData, $secretKey
-        );
+        $result = YooMoneyAPI::checkNotificationSignature($request->sha1_hash, $request->all(), env("YOOMONEY_SECRET"));
         if ($result) {
-            $rcon = new Rcon(env('MCRCON_HOST'), env('MCRCON_PORT'), env('MCRCON_PASSWORD'), 1);
+            $rcon = new Rcon(env('MCRCON_IP'), env('MCRCON_PORT'), env('MCRCON_PASSWORD'), 1);
+            $label = explode("||", $request->label);
+
             if ($rcon->connect()) {
-                $donate = Donate::query()->where('title', $notificationData['bill']['customFields']['donate']);
-                $promocode = Promocode::query()->where('promocode', $notificationData['bill']['customFields']['promocode']);
-                $user = User::query()->where('nickname', $notificationData['bill']['customFields']['nickname']);
+                $donate = Donate::query()->where('title', $label[0]);
+                $user = User::query()->where('nickname', $label[1]);
+                $promocode = Promocode::query()->where('promocode', $label[2]);
 
                 if ($promocode->exists()) {
                     $promocode->first()->decrement('count', 1);
@@ -77,28 +72,23 @@ class MiscController extends Controller
 
     public function link(Request $request, GetPriceAction $action)
     {
+        Log::info($request);
         $price = $action($request);
         if ($price > -1) {
-            $billPayments = new BillPayments(env('QIWI_SECRET_KEY'));
-            $date = date(DATE_ATOM, time() + 60 * 60);
-            $billId = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
+            $yoomoney = new YooMoneyAPI([
+                "receiver" => env("BILL_NUMBER"),
+                "quickpay-form" => "shop",
+                "targets" => "Donation",
+                "paymentType" => "SB",
+                "label" => $request->donate . "||" . $request->nickname . "||" . $request->promocode,
+                "sum" => str($price)
+            ]);
 
-            $fields = [
-                'amount' => $price,
-                'currency' => 'RUB',
-                'expirationDateTime' => $date,
-                'customFields' => [
-                    'promocode' => $request->promocode,
-                    'nickname' => $request->nickname,
-                    'donate' => $request->donate,
-                    'themeCode' => env('QIWI_THEMECODE'),
-                ],
-            ];
-
-            $response = $billPayments->createBill($billId, $fields);
+            $url = $yoomoney->getFinalUrl();
+            $response = Http::post($url);
 
             return response()->json([
-                'link' => $response['payUrl'],
+                'link' => $response->handlerStats()["url"],
             ]);
         }
 

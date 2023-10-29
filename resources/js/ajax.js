@@ -53,7 +53,7 @@ $("body").on("click", ".buy", function (event) {
     const scrf = $('input[name="_token"]').attr("value");
 
     $.ajax({
-        url: "qiwi/donate",
+        url: "yoomoney/donate",
         type: "POST",
         dataType: "json",
         contentType: 'application/json; charset=utf-8',
@@ -64,7 +64,9 @@ $("body").on("click", ".buy", function (event) {
             "promocode": promocode
         }),
         success: function (response) {
-            if (!response.error) window.location.href = response.link;
+            if (!response.error) {
+                window.location.href = response.link;
+            }
         },
     });
 });

@@ -19,7 +19,9 @@ class SetupCheck
         if ($request->path() == 'setup' || $request->path() == 'setup_process') {
             if (env('SETUP_DONE')) return to_route('index');
             return $next($request);
-        } elseif (!env('SETUP_DONE')) return to_route('setup');
+        } elseif (!env('SETUP_DONE')) {
+            return to_route('setup');
+        }
         return $next($request);
     }
 }

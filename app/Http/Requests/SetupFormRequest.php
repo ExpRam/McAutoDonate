@@ -26,8 +26,8 @@ class SetupFormRequest extends FormRequest
         return [
             'username' => ['required', 'string', 'min:2'],
             'password' => ['required'],
-            'secret_key' => ['required'],
-            'themecode' => ['required'],
+            'yoomoney_secret' => ['required'],
+            'bill_number' => ['required'],
             'rcon_host' => ['required'],
             'rcon_port' => ['required', 'numeric'],
             'rcon_password' => ['required'],

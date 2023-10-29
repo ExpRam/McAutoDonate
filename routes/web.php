@@ -18,8 +18,8 @@ Route::middleware('guest')->group(function () {
 Route::controller(\App\Http\Controllers\MiscController::class)->group(function () {
     Route::get('/uuid/{nickname}', 'uuid')->name('uuid');
     Route::post('/get/price', 'price')->name('price');
-    Route::post('/qiwi/donate', 'link')->name('link');
-    Route::post('/qiwi/handler', 'handler')->middleware('throttle:qiwi')->name('handler');
+    Route::post('/yoomoney/donate', 'link')->name('link');
+    Route::post('/yoomoney/handler', 'handler')->middleware('throttle:yoomoney')->name('handler');
 });
 
 
