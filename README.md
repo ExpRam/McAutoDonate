@@ -75,6 +75,7 @@ When you set server at https://yoomoney.ru/transfer/myservices/http-notification
 ### Admin panel
 
 You can log in to the admin panel at yourdomain.com/admin/login
+
 Notification server: https://yourdomain.com/yoomoney/handler
 
 <a href="https://github.com/ExpRam/McAutoDonate/blob/main/README_RU.md">Ru Version</a>
