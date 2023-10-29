@@ -58,7 +58,7 @@
                     <label
                         class="mb-5 block text-base text-center font-semibold text-[#07074D] sm:text-xl"
                     >
-                        Qiwi Api Details
+                        Yoomoney Details
                     </label>
                     <div class="text-center mb-3">
                         @error('yoomoney_secret')<h1 class="text-red-500">{{ $message }}</h1>@enderror
