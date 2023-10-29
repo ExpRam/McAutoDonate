@@ -9,7 +9,7 @@
   <p align="center">
     Система Авто Доната на PHP Laravel
     <br />
-    McAutoDonate использует <a href="https://qiwi.com/">qiwi.com</a> в качестве платёжной системы
+    McAutoDonate использует <a href="https://yoomoney.ru/">yoomoney.ru</a> в качестве платёжной системы
     <br />
     <a href="https://github.com/ExpRam/McAutoDonate/issues">Сообщить о баге</a>
     ·
@@ -68,13 +68,15 @@
 
 ### Когда сервер запускается в первый раз
 
-При первом запуске сервера необходимо ввести учетные данные для подключения к rcon и учетные данные платежной системы qiwi (SECRET_KEY, THEME_CODE)
+При первом запуске сервера необходимо ввести учетные данные для подключения к rcon и учетные данные платежной системы yoomoney (YOOMONEY_SECRET, BILL_NUMBER)
 
-При создании пары ключей на https://qiwi.com/p2p-admin/api вы не можете указать локальный ip-адрес в качестве сервера уведомлений
+При установке сервера на https://yoomoney.ru/transfer/myservices/http-notification вы не можете указать локальный ip-адрес в качестве сервера уведомлений
 
 ### Админ панель
 
 Вы можете войти в админ панель по адресу yourdomain.com/admin/login
+
+Сервер уведомлений: https://yourdomain.com/yoomoney/handler
 
 <a href="https://github.com/ExpRam/McAutoDonate/blob/main/README.md">Eng Version</a>
 
