@@ -9,7 +9,7 @@
   <p align="center">
     Auto Donate System For Minecraft on PHP Laravel 
     <br />
-    McAutoDonate uses <a href="https://qiwi.com/">qiwi.com</a> as a payment system
+    McAutoDonate uses <a href="https://yoomoney.ru/">yoomoney.ru</a> as a payment system
     <br />
     <a href="https://github.com/ExpRam/McAutoDonate/issues">Report Bug</a>
     ·
@@ -68,13 +68,14 @@ Here is how you can run the project locally:
 
 ### When the server is started for the first time
 
-When starting the server for the first time, you need to enter the credentials for connecting to the rcon and the credentials from the qiwi payment system (SECRET_KEY, THEME_CODE)
+When starting the server for the first time, you need to enter the credentials for connecting to the rcon and the credentials from the yoomoney payment system (YOOMONEY_SECRET, BILL_NUMBER)
 
-When you create a key pair at https://qiwi.com/p2p-admin/api you cannot specify a local ip-address as a notification server
+When you set server at https://yoomoney.ru/transfer/myservices/http-notification you cannot specify a local ip-address as a notification server
 
 ### Admin panel
 
 You can log in to the admin panel at yourdomain.com/admin/login
+Notification server: https://yourdomain.com/yoomoney/handler
 
 <a href="https://github.com/ExpRam/McAutoDonate/blob/main/README_RU.md">Ru Version</a>
 
